@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://nordictide.tech/images/seo-og.jpg">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Nordic Tide","legalName":"Nordic Tide AS","url":"https://nordictide.tech","foundingDate":"2024","address":{"@type":"PostalAddress","addressRegion":"Trøndelag","addressCountry":"NO"},"contactPoint":{"@type":"ContactPoint","email":"post@nordictide.tech","contactType":"customer service","availableLanguage":["Norwegian","English"]}}
+{"@context":"https://schema.org","@type":"Organization","name":"Nordic Tide","legalName":"Nordic Tide AS","url":"https://nordictide.tech","foundingDate":"2024","address":{"@type":"PostalAddress","addressRegion":"Fosen, Trøndelag","addressCountry":"NO"},"contactPoint":{"@type":"ContactPoint","email":"post@nordictide.tech","contactType":"customer service","availableLanguage":["Norwegian","English"]}}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
 <style>
 :root {
   /* Nordic Tide Brand (Corporate) */
-  --nt-black: #0a0a0a;
+  --nt-black: #1a1a1a;
   --nt-white: #fcfbf9;
   --nt-cream: #f3f0e8;
   --nt-dim: #6b665d;
@@ -54,6 +54,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+*:focus-visible { outline: 2px solid var(--ai-sage); outline-offset: 3px; border-radius: 4px; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -159,10 +160,10 @@ nav.scrolled { height: 60px; border-bottom-color: rgba(0,0,0,0.1); }
 
 .hero-eyebrow {
   font-family: 'Space Mono', monospace;
-  font-size: 0.75rem; font-weight: 500;
+  font-size: 0.85rem; font-weight: 500;
   color: var(--nt-dim);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   margin-bottom: 32px;
   display: inline-block;
   padding: 4px 12px;
@@ -225,7 +226,7 @@ nav.scrolled { height: 60px; border-bottom-color: rgba(0,0,0,0.1); }
 
 /* ── MARQUEE ── */
 .marquee-container {
-  background: var(--nt-black);
+  background: #2a2a28;
   padding: 24px 0;
   overflow: hidden;
 }
@@ -239,10 +240,10 @@ nav.scrolled { height: 60px; border-bottom-color: rgba(0,0,0,0.1); }
 
 .marquee-content span {
   font-family: 'Space Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.5);
   display: flex; align-items: center; gap: 12px;
 }
 
@@ -260,8 +261,8 @@ section { padding: 140px 40px; }
 
 .section-label {
   font-family: 'Space Mono', monospace;
-  font-size: 0.75rem; text-transform: uppercase;
-  letter-spacing: 0.2em; color: var(--nt-dim);
+  font-size: 0.8rem; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--nt-dim);
   margin-bottom: 24px; display: block;
 }
 
@@ -418,7 +419,7 @@ section { padding: 140px 40px; }
 
 .value-num {
   font-family: 'Space Mono', monospace;
-  font-size: 0.8rem; color: var(--nt-warm-gray);
+  font-size: 0.85rem; color: var(--nt-warm-gray);
   margin-bottom: 32px; display: block;
 }
 
@@ -426,7 +427,7 @@ section { padding: 140px 40px; }
 .value-card p { color: var(--nt-dim); line-height: 1.7; }
 
 /* ── CONTACT ── */
-.contact { background: var(--nt-black); color: var(--nt-white); }
+.contact { background: #2a2a28; color: var(--nt-white); }
 
 .contact-grid {
   max-width: 1200px; margin: 0 auto;
@@ -440,8 +441,8 @@ section { padding: 140px 40px; }
 
 .method-label {
   font-family: 'Space Mono', monospace;
-  font-size: 0.7rem; text-transform: uppercase;
-  color: rgba(255,255,255,0.4); margin-bottom: 12px;
+  font-size: 0.8rem; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); margin-bottom: 12px;
   display: block;
 }
 
@@ -456,12 +457,12 @@ section { padding: 140px 40px; }
 /* ── FOOTER ── */
 footer {
   padding: 60px 40px;
-  background: var(--nt-black);
-  border-top: 1px solid rgba(255,255,255,0.1);
+  background: #232320;
+  border-top: 1px solid rgba(255,255,255,0.08);
   display: flex; justify-content: space-between; align-items: center;
 }
 
-.footer-copy { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+.footer-copy { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
 
 .footer-links { display: flex; gap: 32px; }
 .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
@@ -477,7 +478,8 @@ footer {
   .hero { padding-top: 160px; text-align: center; }
   .hero-desc { margin: 0 auto 48px; }
   .hero-buttons { justify-content: center; }
-  .hero-visual { height: 400px; }
+  .hero-visual { display: none; }
+  .contact-visual { display: none; }
   .values-grid { grid-template-columns: 1fr; }
   .aigree-content { padding: 40px; }
 }
@@ -522,7 +524,7 @@ footer {
 <section class="hero">
   <div class="hero-content">
     <div class="hero-text">
-      <span class="hero-eyebrow reveal">Teknologiselskap fra Trøndelag</span>
+      <span class="hero-eyebrow reveal">Teknologiselskap fra Fosen, Trøndelag</span>
       <h1 class="reveal">Teknologi som forstår <em>mennesker</em></h1>
       <p class="hero-desc reveal">Vi bygger digitale løsninger som gjør kompleks informasjon tilgjengelig og forståelig – uansett språk, bakgrunn eller forkunnskaper.</p>
       <div class="hero-buttons reveal">
@@ -565,7 +567,7 @@ footer {
     <div class="about-text reveal">
       <span class="section-label">01 — Om oss</span>
       <h2 class="section-title">Vi gjør det komplekse enkelt</h2>
-      <p>Nordic Tide AS er et teknologiselskap med røtter i Trøndelag. Vi brenner for å utvikle produkter som bygger bro mellom organisasjoner og mennesker – med fokus på klarhet, tilgjengelighet og gjensidig tillit.</p>
+      <p>Nordic Tide AS er et teknologiselskap med røtter på Fosen i Trøndelag. Vi brenner for å utvikle produkter som bygger bro mellom organisasjoner og mennesker – med fokus på klarhet, tilgjengelighet og gjensidig tillit.</p>
       <p>Vår filosofi er enkel: Informasjon har ingen verdi hvis den ikke blir forstått. Derfor bruker vi moderne teknologi for å bryte ned barrierer.</p>
     </div>
     <div class="stats-grid reveal">
@@ -636,7 +638,7 @@ footer {
       <div class="value-card reveal">
         <span class="value-num">01</span>
         <h3>Klarhet</h3>
-        <p>Vi fjerner støy og unødvendig kompleksitet. Resultatet er informasjon som er umiddelbart forståelig.</p>
+        <p>Vi forenkler det komplekse. Resultatet er informasjon som er umiddelbart forståelig.</p>
       </div>
       <div class="value-card reveal">
         <span class="value-num">02</span>
@@ -671,7 +673,7 @@ footer {
         </div>
         <div>
           <span class="method-label">Lokasjon</span>
-          <span class="method-value">Trøndelag, Norge</span>
+          <span class="method-value">Fosen, Trøndelag</span>
         </div>
       </div>
     </div>
