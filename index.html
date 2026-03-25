@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nordic Tide – Teknologi som forstår mennesker</title>
+<meta name="description" content="Nordic Tide bygger teknologi som gjør viktig informasjon tilgjengelig og forståelig for alle. Vi står bak Aigree.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://nordictide.tech/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nordictide.tech/">
+<meta property="og:title" content="Nordic Tide – Teknologi som forstår mennesker">
+<meta property="og:description" content="Vi bygger teknologi som gjør viktig informasjon tilgjengelig og forståelig for alle.">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:site_name" content="Nordic Tide">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Nordic Tide","legalName":"Nordic Tide AS","url":"https://nordictide.tech","foundingDate":"2024","address":{"@type":"PostalAddress","addressRegion":"Trøndelag","addressCountry":"NO"},"contactPoint":{"@type":"ContactPoint","email":"post@nordictide.tech","contactType":"customer service","availableLanguage":["Norwegian","English"]}}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black: #0a0a0a;
+  --white: #f8f7f4;
+  --cream: #edeae3;
+  --warm-gray: #b5b0a6;
+  --dim: #7a756b;
+  --accent: #D97706;
+  --accent-dim: rgba(217,119,6,0.15);
+  --dark: #111110;
+  --dark-card: #1a1a18;
+  /* Aigree brand */
+  --sage: #2D5F4F;
+  --sage-light: #3A7A66;
+  --sage-dark: #1E4538;
+  --aigree-cream: #F8F6F1;
+  --aigree-cream-warm: #F3EFE7;
+  --burnt: #D97706;
+  --burnt-light: #F59E0B;
+  --charcoal: #1F2937;
+  --taupe: #E8E4DB;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mono { font-family: 'Space Mono', monospace; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(248,247,244,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 0 48px;
+  height: 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.logo {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; font-size: 1rem; color: var(--black);
+  letter-spacing: -0.02em; text-decoration: none;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-link {
+  color: var(--dim); text-decoration: none;
+  padding: 6px 14px; border-radius: 6px;
+  font-weight: 500; font-size: 0.82rem;
+  transition: color 0.2s;
+  letter-spacing: 0.01em;
+}
+.nav-link:hover { color: var(--black); }
+.nav-cta {
+  background: var(--black); color: var(--white);
+  padding: 7px 18px; border-radius: 6px;
+  font-weight: 600; font-size: 0.82rem;
+  text-decoration: none; transition: opacity 0.2s;
+  margin-left: 12px;
+}
+.nav-cta:hover { opacity: 0.8; }
+
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 24px; height: 16px; position: relative; padding: 0; z-index: 102;
+}
+.hamburger span {
+  display: block; width: 100%; height: 1.5px; background: var(--black);
+  position: absolute; left: 0; transition: all 0.3s ease;
+}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 7px; }
+.hamburger span:nth-child(3) { bottom: 0; }
+.hamburger.open span:nth-child(1) { top: 7px; transform: rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { bottom: 7px; transform: rotate(-45deg); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: flex-end;
+  padding: 0 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; right: -10%; bottom: 0;
+  width: 55%;
+  background: var(--cream);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 1200px; width: 100%;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem; font-weight: 400;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--black);
+  margin-bottom: 40px;
+  max-width: 700px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--sage);
+}
+.hero-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 40px;
+}
+.hero-desc {
+  font-size: 1.05rem; color: var(--dim);
+  max-width: 400px; line-height: 1.7;
+}
+.hero-buttons { display: flex; gap: 12px; flex-shrink: 0; }
+.btn-dark {
+  background: var(--black); color: var(--white);
+  padding: 14px 28px; border-radius: 8px;
+  font-weight: 600; font-size: 0.9rem;
+  text-decoration: none; transition: opacity 0.2s;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.btn-dark:hover { opacity: 0.8; }
+.btn-outline {
+  background: transparent; color: var(--black);
+  padding: 14px 28px; border-radius: 8px;
+  font-weight: 600; font-size: 0.9rem;
+  text-decoration: none; transition: all 0.2s;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  font-family: 'Space Grotesk', sans-serif;
+}
+.btn-outline:hover { border-color: var(--black); }
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  padding: 28px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+.marquee {
+  display: flex; gap: 64px;
+  animation: scroll 20s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+.marquee span {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--warm-gray);
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── ABOUT ── */
+.about { padding: 120px 48px; }
+.about-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px;
+  align-items: start;
+}
+.about-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--dim);
+  margin-bottom: 24px;
+}
+.about h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+}
+.about-text p {
+  font-size: 1rem; color: var(--dim);
+  line-height: 1.8; margin-bottom: 16px;
+}
+.about-facts {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  background: rgba(0,0,0,0.06); border-radius: 12px;
+  overflow: hidden;
+}
+.fact {
+  background: var(--cream); padding: 36px 32px;
+}
+.fact-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--black); margin-bottom: 6px;
+}
+.fact-label {
+  font-size: 0.82rem; color: var(--dim);
+}
+
+/* ── PRODUCT (AIGREE) ── */
+.product {
+  background: var(--aigree-cream);
+  padding: 120px 48px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--taupe);
+  border-bottom: 1px solid var(--taupe);
+}
+.product-inner {
+  max-width: 1200px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.product-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--dim);
+  margin-bottom: 24px;
+}
+.product h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--sage-dark);
+  margin-bottom: 20px;
+}
+.product-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem; color: var(--charcoal);
+  max-width: 520px; line-height: 1.8;
+  margin-bottom: 64px; opacity: 0.7;
+}
+.aigree-card {
+  background: var(--aigree-cream-warm);
+  border: 1px solid var(--taupe);
+  border-radius: 16px;
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  overflow: hidden;
+}
+.aigree-info {
+  padding: 56px;
+  font-family: 'DM Sans', sans-serif;
+}
+.aigree-brand {
+  margin-bottom: 32px;
+}
+.aigree-logo-text {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2rem; font-weight: 700;
+  color: var(--charcoal); letter-spacing: -0.03em;
+}
+.aigree-info > p {
+  color: var(--charcoal); font-size: 0.95rem;
+  line-height: 1.8; margin-bottom: 36px; opacity: 0.7;
+}
+.aigree-features {
+  list-style: none; margin-bottom: 40px;
+  display: grid; gap: 12px;
+}
+.aigree-features li {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--charcoal); font-size: 0.9rem;
+}
+.feat-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--sage); flex-shrink: 0;
+}
+.btn-aigree {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--sage-dark); color: var(--white);
+  padding: 12px 24px; border-radius: 8px;
+  font-weight: 600; font-size: 0.9rem;
+  text-decoration: none; transition: background 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-aigree:hover { background: var(--sage); }
+.aigree-visual {
+  background: var(--sage-dark);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; min-height: 400px;
+}
+.aigree-visual-content {
+  text-align: center; padding: 40px;
+}
+.aigree-visual-logo {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 3.5rem; font-weight: 700;
+  color: var(--aigree-cream); letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+.aigree-visual-tagline {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; color: rgba(248,246,241,0.5);
+  letter-spacing: 0.02em;
+}
+
+/* ── VALUES ── */
+.values { padding: 120px 48px; }
+.values-inner { max-width: 1200px; margin: 0 auto; }
+.values-header { margin-bottom: 64px; }
+.values-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--dim);
+  margin-bottom: 24px;
+}
+.values h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.values-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  background: rgba(0,0,0,0.06); border-radius: 12px;
+  overflow: hidden;
+}
+.value-item {
+  background: var(--white); padding: 48px 40px;
+  transition: background 0.3s;
+}
+.value-item:hover { background: var(--cream); }
+.value-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem; color: var(--sage);
+  margin-bottom: 20px;
+}
+.value-item h3 {
+  font-size: 1.15rem; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.value-item p {
+  font-size: 0.9rem; color: var(--dim); line-height: 1.7;
+}
+
+/* ── CONTACT ── */
+.contact {
+  padding: 120px 48px;
+  background: var(--cream);
+}
+.contact-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: start;
+}
+.contact-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--dim);
+  margin-bottom: 24px;
+}
+.contact h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.03em; margin-bottom: 20px;
+}
+.contact-left p {
+  font-size: 1rem; color: var(--dim); line-height: 1.8;
+}
+.contact-right {
+  display: flex; flex-direction: column; gap: 32px;
+}
+.contact-block {}
+.contact-block-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--warm-gray);
+  margin-bottom: 8px;
+}
+.contact-block a, .contact-block span {
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--black); text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-block a:hover { color: var(--accent); }
+.contact-block a.email-link { cursor: pointer; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(10,10,10,0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  border-radius: 16px;
+  max-width: 480px; width: 100%;
+  padding: 48px; position: relative;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.15);
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none; cursor: pointer;
+  font-size: 1.4rem; color: var(--dim);
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: var(--cream); }
+.modal h3 {
+  font-size: 1.3rem; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 8px;
+}
+.modal > p {
+  font-size: 0.9rem; color: var(--dim);
+  margin-bottom: 28px;
+}
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--dim);
+  margin-bottom: 6px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%; padding: 12px 14px;
+  border: 1px solid var(--cream);
+  border-radius: 8px; font-size: 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--cream);
+  color: var(--black);
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--sage); background: var(--white);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.btn-send {
+  width: 100%; padding: 14px;
+  background: var(--black); color: var(--white);
+  border: none; border-radius: 8px;
+  font-weight: 600; font-size: 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
+  cursor: pointer; transition: opacity 0.2s;
+  margin-top: 8px;
+}
+.btn-send:hover { opacity: 0.8; }
+.form-success {
+  display: none; text-align: center; padding: 24px 0;
+}
+.form-success .checkmark {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--sage); color: var(--white);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 16px;
+}
+.form-success h4 {
+  font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;
+}
+.form-success p { font-size: 0.9rem; color: var(--dim); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 32px 48px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem; color: var(--warm-gray);
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a {
+  font-size: 0.8rem; color: var(--dim);
+  text-decoration: none; font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--black); }
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1),
+              transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links {
+    display: none; position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--white);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px; z-index: 101;
+  }
+  .nav-links.open { display: flex; }
+  .nav-link { font-size: 1.1rem; }
+  .nav-cta { font-size: 1rem; margin-left: 0; }
+  .hamburger { display: block; }
+
+  .hero {
+    padding: 120px 24px 60px;
+    min-height: auto; align-items: flex-start;
+  }
+  .hero::before { display: none; }
+  .hero h1 { font-size: 2.6rem; max-width: 100%; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; }
+
+  .about { padding: 80px 24px; }
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+
+  .product { padding: 80px 24px; }
+  .aigree-card { grid-template-columns: 1fr; }
+  .aigree-visual { min-height: 240px; }
+  .aigree-info { padding: 36px; }
+
+  .values { padding: 80px 24px; }
+  .values-grid { grid-template-columns: 1fr; }
+
+  .contact { padding: 80px 24px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+
+  footer { padding: 24px; flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Nordic Tide</a>
+  <button class="hamburger" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open');" aria-label="Meny">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="#om" class="nav-link">Om oss</a>
+    <a href="#produkt" class="nav-link">Produkt</a>
+    <a href="#verdier" class="nav-link">Verdier</a>
+    <a href="#kontakt" class="nav-cta">Kontakt</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">Teknologiselskap fra Trøndelag</div>
+    <h1 class="reveal reveal-delay-1">Teknologi som forstår <em>mennesker</em></h1>
+    <div class="hero-bottom reveal reveal-delay-2">
+      <p class="hero-desc">Vi bygger digitale produkter som gjør viktig informasjon tilgjengelig og forståelig – uansett språk og bakgrunn.</p>
+      <div class="hero-buttons">
+        <a href="https://aigree.no" class="btn-dark" target="_blank">Se Aigree</a>
+        <a href="#kontakt" class="btn-outline">Ta kontakt</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>Onboarding</span>
+    <span>Flerspråklig</span>
+    <span>AI-drevet</span>
+    <span>Compliance</span>
+    <span>Tilgjengelighet</span>
+    <span>Dokumenthåndtering</span>
+    <span>Onboarding</span>
+    <span>Flerspråklig</span>
+    <span>AI-drevet</span>
+    <span>Compliance</span>
+    <span>Tilgjengelighet</span>
+    <span>Dokumenthåndtering</span>
+  </div>
+</div>
+
+<!-- OM OSS -->
+<section class="about" id="om">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <div class="about-label">01 — Om oss</div>
+      <h2>Vi gjør det komplekse enkelt</h2>
+      <p>Nordic Tide er et teknologiselskap fra Trøndelag. Vi utvikler produkter som bygger bro mellom organisasjoner og mennesker – med fokus på klarhet, tilgjengelighet og tillit.</p>
+      <p>Vårt første produkt, Aigree, hjelper arbeidsgivere med å formidle viktig informasjon til ansatte på en måte de faktisk forstår.</p>
+    </div>
+    <div class="about-facts reveal reveal-delay-1">
+      <div class="fact">
+        <div class="fact-value">2024</div>
+        <div class="fact-label">Grunnlagt</div>
+      </div>
+      <div class="fact">
+        <div class="fact-value">Trøndelag</div>
+        <div class="fact-label">Lokasjon</div>
+      </div>
+      <div class="fact">
+        <div class="fact-value">AI</div>
+        <div class="fact-label">Drevet teknologi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUKT -->
+<section class="product" id="produkt">
+  <div class="product-inner">
+    <div class="product-label reveal">02 — Produkt</div>
+    <h2 class="reveal">Bygget for å bli forstått</h2>
+    <p class="product-intro reveal">Aigree er vår plattform som gjør viktig informasjon forståelig for alle – fra første arbeidsdag til siste.</p>
+    <div class="aigree-card reveal">
+      <div class="aigree-info">
+        <div class="aigree-brand">
+          <span class="aigree-logo-text">aigree</span>
+        </div>
+        <p>En digital plattform der organisasjoner formidler viktig informasjon – og der brukere faktisk forstår den. Uansett språk.</p>
+        <ul class="aigree-features">
+          <li><span class="feat-dot"></span>Flerspråklig dokumentforklaring</li>
+          <li><span class="feat-dot"></span>AI-drevet forenkling</li>
+          <li><span class="feat-dot"></span>Onboarding og offboarding</li>
+          <li><span class="feat-dot"></span>Sporbar compliance</li>
+          <li><span class="feat-dot"></span>Whitelabel-mulighet</li>
+        </ul>
+        <a href="https://aigree.no" class="btn-aigree" target="_blank">Besøk aigree.no &rarr;</a>
+      </div>
+      <div class="aigree-visual">
+        <div class="aigree-visual-content">
+          <span class="aigree-visual-logo">aigree</span>
+          <span class="aigree-visual-tagline">Gjør viktig informasjon forståelig</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERDIER -->
+<section class="values" id="verdier">
+  <div class="values-inner">
+    <div class="values-header reveal">
+      <div class="values-label">03 — Verdier</div>
+      <h2>Det vi tror på</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-item reveal">
+        <div class="value-num">01</div>
+        <h3>Klarhet</h3>
+        <p>Informasjon har ingen verdi hvis den ikke forstås. Vi gjør det komplekse tilgjengelig.</p>
+      </div>
+      <div class="value-item reveal reveal-delay-1">
+        <div class="value-num">02</div>
+        <h3>Inkludering</h3>
+        <p>Teknologi skal fungere for alle – uavhengig av språk, bakgrunn eller digital kompetanse.</p>
+      </div>
+      <div class="value-item reveal reveal-delay-2">
+        <div class="value-num">03</div>
+        <h3>Tillit</h3>
+        <p>Vi bygger produkter som organisasjoner og brukere kan stole på – med sporbarhet og åpenhet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact" id="kontakt">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <div class="contact-label">04 — Kontakt</div>
+      <h2>Vil du vite mer?</h2>
+      <p>Vi hører gjerne fra deg – enten du er nysgjerrig på produktene våre eller ønsker et samarbeid.</p>
+    </div>
+    <div class="contact-right reveal reveal-delay-1">
+      <div class="contact-block">
+        <div class="contact-block-label">E-post</div>
+        <a href="#" class="email-link" onclick="event.preventDefault(); document.getElementById('contactModal').classList.add('open');">post@nordictide.tech</a>
+      </div>
+      <div class="contact-block">
+        <div class="contact-block-label">Selskap</div>
+        <span>Nordic Tide AS</span>
+      </div>
+      <div class="contact-block">
+        <div class="contact-block-label">Sted</div>
+        <span>Trøndelag, Norge</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">&copy; 2024 Nordic Tide AS</span>
+  <div class="footer-links">
+    <a href="https://aigree.no" target="_blank">Aigree</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+</footer>
+
+<!-- KONTAKTSKJEMA MODAL -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('contactModal').classList.remove('open');">&times;</button>
+    <div id="contactForm">
+      <h3>Send oss en melding</h3>
+      <p>Vi svarer vanligvis innen én virkedag.</p>
+      <form action="https://formsubmit.co/post@nordictide.tech" method="POST" id="theForm">
+        <input type="hidden" name="_subject" value="Ny henvendelse fra nordictide.tech">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://nordictide.tech/#kontakt">
+        <input type="text" name="_honey" style="display:none">
+        <div class="form-group">
+          <label for="name">Navn</label>
+          <input type="text" id="name" name="name" required placeholder="Ditt navn">
+        </div>
+        <div class="form-group">
+          <label for="email">E-post</label>
+          <input type="email" id="email" name="email" required placeholder="din@epost.no">
+        </div>
+        <div class="form-group">
+          <label for="message">Melding</label>
+          <textarea id="message" name="message" required placeholder="Hva kan vi hjelpe deg med?"></textarea>
+        </div>
+        <button type="submit" class="btn-send">Send melding</button>
+      </form>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <div class="checkmark">&#10003;</div>
+      <h4>Takk for meldingen!</h4>
+      <p>Vi tar kontakt så snart vi kan.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.hamburger').classList.remove('open');
+    document.querySelector('.nav-links').classList.remove('open');
+  });
+});
+
+// Modal
+const modal = document.getElementById('contactModal');
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) modal.classList.remove('open');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') modal.classList.remove('open');
+});
+</script>
+
+</body>
+</html>
