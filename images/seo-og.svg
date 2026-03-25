@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <text x="100" y="280" font-family="'Courier New', monospace" font-size="64" font-weight="700" fill="#fcfbf9" letter-spacing="-2" text-transform="uppercase">NORDIC TIDE</text>
+  <text x="100" y="350" font-family="Arial, sans-serif" font-size="28" fill="#6b665d">Teknologi som forstår mennesker</text>
+  <rect x="100" y="400" width="60" height="4" fill="#2D5F4F" rx="2"/>
+  <text x="100" y="460" font-family="Arial, sans-serif" font-size="18" fill="#b5b0a6">nordictide.tech</text>
+</svg>
