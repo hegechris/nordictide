@@ -24,11 +24,14 @@
 
 <style>
 :root {
+  /* Nordic Tide Brand (Corporate) */
   --nt-black: #0a0a0a;
   --nt-white: #fcfbf9;
   --nt-cream: #f3f0e8;
   --nt-dim: #6b665d;
   --nt-warm-gray: #b5b0a6;
+  
+  /* Aigree Brand (Product - from technical doc) */
   --ai-sage: #2D5F4F;
   --ai-sage-light: #3A7A66;
   --ai-sage-dark: #1E4538;
@@ -40,6 +43,7 @@
   --ai-charcoal-soft: #374151;
   --ai-taupe: #E8E4DB;
   --ai-footer: #2B3A35;
+
   --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -59,30 +63,37 @@ body {
 .serif { font-family: 'Fraunces', serif; }
 .sans { font-family: 'DM Sans', sans-serif; }
 
+/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   background: rgba(252, 251, 249, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 0 40px; height: 72px;
+  padding: 0 40px;
+  height: 72px;
   display: flex; justify-content: space-between; align-items: center;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   transition: var(--transition-smooth);
 }
+
 nav.scrolled { height: 60px; border-bottom-color: rgba(0,0,0,0.1); }
 
 .logo {
   font-family: 'Space Mono', monospace;
   font-weight: 700; font-size: 1.1rem; color: var(--nt-black);
-  letter-spacing: -0.02em; text-decoration: none; text-transform: uppercase;
+  letter-spacing: -0.02em; text-decoration: none;
+  text-transform: uppercase;
 }
+
 .nav-links { display: flex; align-items: center; gap: 8px; }
 .nav-link {
   color: var(--nt-dim); text-decoration: none;
   padding: 8px 16px; border-radius: 8px;
-  font-weight: 500; font-size: 0.85rem; transition: all 0.2s ease;
+  font-weight: 500; font-size: 0.85rem;
+  transition: all 0.2s ease;
 }
 .nav-link:hover { color: var(--nt-black); background: rgba(0,0,0,0.03); }
+
 .nav-cta {
   background: var(--nt-black); color: var(--nt-white);
   padding: 10px 20px; border-radius: 8px;
@@ -103,231 +114,376 @@ nav.scrolled { height: 60px; border-bottom-color: rgba(0,0,0,0.1); }
 .hamburger span:nth-child(1) { top: 0; }
 .hamburger span:nth-child(2) { top: 9px; width: 70%; }
 .hamburger span:nth-child(3) { bottom: 0; }
+
 .hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
 .hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
+/* ── HERO ── */
 .hero {
-  min-height: 100vh; display: flex; align-items: center;
-  padding: 120px 40px 80px; position: relative;
-  background: radial-gradient(circle at 70% 30%, var(--nt-cream) 0%, transparent 60%);
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  background: linear-gradient(135deg, var(--nt-cream) 0%, rgba(243, 240, 232, 0.5) 100%);
+  overflow: hidden;
 }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  right: -20%;
+  top: -10%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(45, 95, 79, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
 .hero-content {
-  max-width: 1200px; width: 100%; margin: 0 auto;
-  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center;
+  max-width: 1200px; width: 100%;
+  margin: 0 auto;
+  display: grid; grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px; align-items: center;
+  position: relative; z-index: 1;
 }
+
 .hero-text { position: relative; z-index: 2; }
+
 .hero-eyebrow {
   font-family: 'Space Mono', monospace;
-  font-size: 0.75rem; font-weight: 500; color: var(--nt-dim);
-  text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 32px;
-  display: inline-block; padding: 4px 12px; background: var(--nt-cream); border-radius: 20px;
+  font-size: 0.75rem; font-weight: 500;
+  color: var(--nt-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 32px;
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--nt-cream);
+  border-radius: 20px;
 }
+
 .hero h1 {
   font-size: clamp(3.5rem, 8vw, 6rem);
-  font-weight: 700; line-height: 0.95; letter-spacing: -0.05em;
-  color: var(--nt-black); margin-bottom: 48px;
+  font-weight: 700; line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--nt-black);
+  margin-bottom: 48px;
 }
-.hero h1 em { font-style: normal; color: var(--ai-sage); }
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--ai-sage);
+}
+
 .hero-desc {
   font-size: 1.15rem; color: var(--nt-dim);
-  max-width: 480px; line-height: 1.7; margin-bottom: 48px;
+  max-width: 480px; line-height: 1.7;
+  margin-bottom: 48px;
 }
+
 .hero-buttons { display: flex; gap: 16px; }
+
 .btn {
   padding: 16px 32px; border-radius: 12px;
   font-weight: 600; font-size: 0.95rem;
   text-decoration: none; transition: var(--transition-smooth);
   display: inline-flex; align-items: center; gap: 8px;
 }
+
 .btn-dark { background: var(--nt-black); color: var(--nt-white); }
 .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-.btn-outline { background: transparent; color: var(--nt-black); border: 1.5px solid rgba(0,0,0,0.1); }
+
+.btn-outline {
+  background: transparent; color: var(--nt-black);
+  border: 1.5px solid rgba(0,0,0,0.1);
+}
 .btn-outline:hover { border-color: var(--nt-black); background: rgba(0,0,0,0.02); }
 
 .hero-visual {
-  position: relative; height: 500px; background: var(--nt-cream);
-  border-radius: 24px; overflow: hidden;
+  position: relative;
+  height: 500px;
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.05);
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.1);
 }
-.hero-visual::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(45deg, rgba(45,95,79,0.1), transparent);
-}
-.floating-card {
-  background: white; padding: 24px; border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  position: absolute; width: 280px; z-index: 3;
-  animation: float 6s ease-in-out infinite;
-}
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
-.marquee-container { background: var(--nt-black); padding: 24px 0; overflow: hidden; }
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── MARQUEE ── */
+.marquee-container {
+  background: var(--nt-black);
+  padding: 24px 0;
+  overflow: hidden;
+}
+
 .marquee-content {
-  display: flex; gap: 80px; animation: scroll 30s linear infinite; white-space: nowrap;
+  display: flex;
+  gap: 80px;
+  animation: scroll 30s linear infinite;
+  white-space: nowrap;
 }
+
 .marquee-content span {
-  font-family: 'Space Mono', monospace; font-size: 0.8rem;
-  text-transform: uppercase; letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 12px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.4);
+  display: flex; align-items: center; gap: 12px;
 }
+
 .marquee-content span::before {
   content: ''; width: 6px; height: 6px; background: var(--ai-sage); border-radius: 50%;
 }
-@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── SECTIONS COMMON ── */
 section { padding: 140px 40px; }
+
 .section-label {
-  font-family: 'Space Mono', monospace; font-size: 0.75rem;
-  text-transform: uppercase; letter-spacing: 0.2em; color: var(--nt-dim);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.2em; color: var(--nt-dim);
   margin-bottom: 24px; display: block;
 }
+
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
-  line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 40px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 40px;
 }
 
+/* ── ABOUT ── */
 .about-grid {
   max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+  align-items: center;
 }
-.about-text p { font-size: 1.1rem; color: var(--nt-dim); line-height: 1.8; margin-bottom: 24px; }
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.about-text p {
+  font-size: 1.1rem; color: var(--nt-dim);
+  line-height: 1.8; margin-bottom: 24px;
+}
+
+.stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+
 .stat-card {
-  background: var(--nt-cream); padding: 40px; border-radius: 20px;
+  background: var(--nt-cream);
+  padding: 40px;
+  border-radius: 20px;
   transition: var(--transition-smooth);
 }
+
 .stat-card:hover { background: #e8e4db; transform: translateY(-5px); }
+
 .stat-value {
-  font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700;
-  color: var(--nt-black); margin-bottom: 8px; display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 2rem; font-weight: 700;
+  color: var(--nt-black); margin-bottom: 8px;
+  display: block;
 }
+
 .stat-label { font-size: 0.9rem; color: var(--nt-dim); font-weight: 500; }
 
-.product {
-  background: var(--ai-cream);
-  border-top: 1px solid var(--ai-taupe); border-bottom: 1px solid var(--ai-taupe);
+/* ── PRODUCT (AIGREE SPECIFIC DESIGN) ── */
+.product { 
+  background: var(--ai-cream); 
+  border-top: 1px solid var(--ai-taupe);
+  border-bottom: 1px solid var(--ai-taupe);
 }
+
 .product-container { max-width: 1200px; margin: 0 auto; }
+
 .aigree-card {
-  background: white; border-radius: 32px;
-  display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
-  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.08); border: 1px solid var(--ai-taupe);
+  background: white;
+  border-radius: 32px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.08);
+  border: 1px solid var(--ai-taupe);
 }
+
 .aigree-content { padding: 80px; font-family: 'DM Sans', sans-serif; }
+
 .aigree-logo {
-  font-family: 'Fraunces', serif; font-size: 2.8rem; font-weight: 700;
-  color: var(--ai-charcoal); margin-bottom: 8px; display: block; letter-spacing: -0.03em;
+  font-family: 'Fraunces', serif;
+  font-size: 2.8rem; font-weight: 700;
+  color: var(--ai-charcoal); margin-bottom: 8px;
+  display: block;
+  letter-spacing: -0.03em;
 }
+
 .aigree-tagline {
-  font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--ai-sage);
-  margin-bottom: 32px; display: block; font-weight: 600;
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem; color: var(--ai-sage);
+  margin-bottom: 32px; display: block;
+  font-weight: 600;
 }
-.aigree-desc { font-size: 1.1rem; color: var(--ai-charcoal-soft); line-height: 1.8; margin-bottom: 40px; }
+
+.aigree-desc {
+  font-size: 1.1rem; color: var(--ai-charcoal-soft);
+  line-height: 1.8; margin-bottom: 40px;
+}
+
 .feature-list { list-style: none; margin-bottom: 48px; }
+
 .feature-item {
   display: flex; align-items: center; gap: 16px;
-  margin-bottom: 16px; font-weight: 500; color: var(--ai-charcoal);
+  margin-bottom: 16px; font-weight: 500;
+  color: var(--ai-charcoal);
 }
+
 .feature-icon {
-  width: 24px; height: 24px; background: var(--ai-sage); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem;
+  width: 24px; height: 24px; background: var(--ai-sage);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 0.7rem;
 }
+
 .btn-aigree {
   background: var(--ai-burnt); color: white;
-  padding: 16px 32px; border-radius: 12px; font-weight: 700;
-  text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 32px; border-radius: 12px;
+  font-weight: 700; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 12px;
   transition: var(--transition-smooth);
 }
+
 .btn-aigree:hover { background: var(--ai-burnt-light); transform: translateY(-2px); }
+
 .aigree-visual {
   background: var(--ai-sage-dark);
   display: flex; align-items: center; justify-content: center;
-  position: relative; padding: 40px;
+  position: relative;
+  padding: 40px;
+  overflow: hidden;
 }
-.aigree-mockup {
-  width: 100%; max-width: 400px; background: var(--ai-cream-warm);
-  border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-}
-.mockup-header {
-  font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--ai-charcoal);
-  margin-bottom: 24px; border-bottom: 1px solid var(--ai-taupe); padding-bottom: 16px;
-}
-.mockup-line { height: 10px; background: var(--ai-taupe); border-radius: 5px; margin-bottom: 12px; }
-.mockup-line.short { width: 60%; }
-.mockup-line.accent { background: var(--ai-sage-light); width: 40%; }
 
-.values-container { max-width: 1200px; margin: 0 auto; }
-.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.value-card {
-  padding: 48px; border-radius: 24px; background: var(--nt-white);
-  border: 1px solid rgba(0,0,0,0.05); transition: var(--transition-smooth);
+.aigree-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
 }
+
+/* ── VALUES ── */
+.values-container { max-width: 1200px; margin: 0 auto; }
+
+.values-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+}
+
+.value-card {
+  padding: 48px;
+  border-radius: 24px;
+  background: var(--nt-white);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: var(--transition-smooth);
+}
+
 .value-card:hover {
-  border-color: var(--nt-black); transform: translateY(-8px);
+  border-color: var(--nt-black);
+  transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.04);
 }
+
 .value-num {
-  font-family: 'Space Mono', monospace; font-size: 0.8rem;
-  color: var(--nt-warm-gray); margin-bottom: 32px; display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem; color: var(--nt-warm-gray);
+  margin-bottom: 32px; display: block;
 }
+
 .value-card h3 { font-size: 1.5rem; margin-bottom: 20px; }
 .value-card p { color: var(--nt-dim); line-height: 1.7; }
 
+/* ── CONTACT ── */
 .contact { background: var(--nt-black); color: var(--nt-white); }
+
 .contact-grid {
   max-width: 1200px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
 }
+
 .contact-info h2 { color: white; margin-bottom: 32px; }
 .contact-info p { color: rgba(255,255,255,0.6); font-size: 1.2rem; margin-bottom: 60px; }
+
 .contact-methods { display: grid; gap: 40px; }
+
 .method-label {
-  font-family: 'Space Mono', monospace; font-size: 0.7rem;
-  text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 12px; display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 12px;
+  display: block;
 }
+
 .method-value {
-  font-size: 1.5rem; font-weight: 600; color: white;
-  text-decoration: none; transition: color 0.2s;
+  font-size: 1.5rem; font-weight: 600;
+  color: white; text-decoration: none;
+  transition: color 0.2s;
 }
+
 .method-value:hover { color: var(--ai-sage-light); }
 
+/* ── FOOTER ── */
 footer {
-  padding: 60px 40px; background: var(--nt-black);
+  padding: 60px 40px;
+  background: var(--nt-black);
   border-top: 1px solid rgba(255,255,255,0.1);
   display: flex; justify-content: space-between; align-items: center;
 }
+
 .footer-copy { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
 .footer-links { display: flex; gap: 32px; }
 .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
 .footer-links a:hover { color: white; }
 
+/* ── MODAL ── */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.8);
   backdrop-filter: blur(8px); z-index: 2000;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; transition: var(--transition-smooth);
 }
+
 .modal-overlay.open { opacity: 1; pointer-events: auto; }
+
 .modal {
   background: var(--nt-white); width: 90%; max-width: 500px;
   padding: 60px; border-radius: 32px; position: relative;
   transform: translateY(40px); transition: var(--transition-smooth);
 }
+
 .modal-overlay.open .modal { transform: translateY(0); }
+
 .modal-close {
   position: absolute; top: 30px; right: 30px;
   background: none; border: none; font-size: 2rem; cursor: pointer;
 }
+
 .form-group { margin-bottom: 24px; }
 .form-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; }
 .form-group input, .form-group textarea {
   width: 100%; padding: 16px; border-radius: 12px;
-  border: 1.5px solid rgba(0,0,0,0.1); font-family: inherit; transition: border-color 0.2s;
+  border: 1.5px solid rgba(0,0,0,0.1); font-family: inherit;
+  transition: border-color 0.2s;
 }
 .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--nt-black); }
 .form-group textarea { height: 120px; resize: none; }
+
 .btn-submit {
   width: 100%; background: var(--nt-black); color: white;
   padding: 18px; border-radius: 12px; border: none;
@@ -335,9 +491,11 @@ footer {
 }
 .btn-submit:hover { opacity: 0.9; transform: scale(0.98); }
 
+/* ── ANIMATIONS ── */
 .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition-smooth); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .hero-content, .about-grid, .aigree-card, .contact-grid { grid-template-columns: 1fr; gap: 60px; }
   .hero { padding-top: 160px; text-align: center; }
@@ -347,6 +505,7 @@ footer {
   .values-grid { grid-template-columns: 1fr; }
   .aigree-content { padding: 40px; }
 }
+
 @media (max-width: 768px) {
   nav { padding: 0 24px; }
   .nav-links {
@@ -359,6 +518,7 @@ footer {
   .nav-link { font-size: 1.5rem; }
   .nav-cta { font-size: 1.2rem; margin: 0; width: 100%; text-align: center; }
   .hamburger { display: block; }
+  
   section { padding: 80px 24px; }
   .hero h1 { font-size: 3.5rem; }
   .modal { padding: 40px 24px; }
@@ -368,6 +528,7 @@ footer {
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="logo">Nordic Tide</a>
   <button class="hamburger" id="menuBtn" aria-label="Meny">
@@ -381,6 +542,7 @@ footer {
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <div class="hero-text">
@@ -393,30 +555,35 @@ footer {
       </div>
     </div>
     <div class="hero-visual reveal">
-      <div class="floating-card">
-        <div style="display:flex; gap:12px; align-items:center; margin-bottom:16px;">
-          <div style="width:32px; height:32px; background:var(--ai-sage); border-radius:8px;"></div>
-          <div style="font-weight:700; font-size:0.9rem;">Aigree Intelligence</div>
-        </div>
-        <div style="height:4px; background:var(--nt-cream); border-radius:2px; margin-bottom:8px; width:100%;"></div>
-        <div style="height:4px; background:var(--nt-cream); border-radius:2px; margin-bottom:8px; width:80%;"></div>
-        <div style="height:4px; background:var(--nt-cream); border-radius:2px; width:60%;"></div>
-      </div>
+      <img src="images/hero_office.jpg" alt="Moderne kontorlandskap med teknologi og samarbeid">
     </div>
   </div>
 </section>
 
+<!-- MARQUEE -->
 <div class="marquee-container">
   <div class="marquee-content">
-    <span>Onboarding</span><span>Flerspråklig</span><span>AI-drevet</span>
-    <span>Compliance</span><span>Tilgjengelighet</span><span>Dokumenthåndtering</span>
-    <span>Inkludering</span><span>Klarhet</span>
-    <span>Onboarding</span><span>Flerspråklig</span><span>AI-drevet</span>
-    <span>Compliance</span><span>Tilgjengelighet</span><span>Dokumenthåndtering</span>
-    <span>Inkludering</span><span>Klarhet</span>
+    <span>Onboarding</span>
+    <span>Flerspråklig</span>
+    <span>AI-drevet</span>
+    <span>Compliance</span>
+    <span>Tilgjengelighet</span>
+    <span>Dokumenthåndtering</span>
+    <span>Inkludering</span>
+    <span>Klarhet</span>
+    <!-- Duplicate for seamless loop -->
+    <span>Onboarding</span>
+    <span>Flerspråklig</span>
+    <span>AI-drevet</span>
+    <span>Compliance</span>
+    <span>Tilgjengelighet</span>
+    <span>Dokumenthåndtering</span>
+    <span>Inkludering</span>
+    <span>Klarhet</span>
   </div>
 </div>
 
+<!-- OM OSS -->
 <section class="about" id="om">
   <div class="about-grid">
     <div class="about-text reveal">
@@ -446,43 +613,40 @@ footer {
   </div>
 </section>
 
+<!-- PRODUKT (AIGREE) -->
 <section class="product" id="produkt">
   <div class="product-container">
     <span class="section-label reveal">02 — Vårt flaggskip</span>
     <h2 class="section-title reveal">Forståelsesinfrastruktur for arbeidslivet</h2>
+    
     <div class="aigree-card reveal">
       <div class="aigree-content">
         <span class="aigree-logo">aigree</span>
         <span class="aigree-tagline">Sendt er ikke det samme som forstått.</span>
         <p class="aigree-desc">Aigree er en intelligent plattform som sikrer at viktig informasjon faktisk når frem. Vi hjelper organisasjoner med å tilpasse, forklare og bekrefte forståelse av kontrakter, HMS og rutiner.</p>
+        
         <ul class="feature-list">
-          <li class="feature-item"><span class="feature-icon">&#10003;</span> AI-drevet forklaring på mottakerens språk</li>
-          <li class="feature-item"><span class="feature-icon">&#10003;</span> Bekreftelse på lest og forstått innhold</li>
-          <li class="feature-item"><span class="feature-icon">&#10003;</span> Full oversikt og dokumentasjon for arbeidsgiver</li>
-          <li class="feature-item"><span class="feature-icon">&#10003;</span> Skalerbar onboarding for alle bransjer</li>
+          <li class="feature-item"><span class="feature-icon">✓</span> AI-drevet forklaring på mottakerens språk</li>
+          <li class="feature-item"><span class="feature-icon">✓</span> Bekreftelse på lest og forstått innhold</li>
+          <li class="feature-item"><span class="feature-icon">✓</span> Full oversikt og dokumentasjon for arbeidsgiver</li>
+          <li class="feature-item"><span class="feature-icon">✓</span> Skalerbar onboarding for alle bransjer</li>
         </ul>
+        
         <a href="https://aigree.no" class="btn-aigree" target="_blank">Utforsk aigree.no &rarr;</a>
       </div>
       <div class="aigree-visual">
-        <div class="aigree-mockup">
-          <div class="mockup-header">Arbeidsavtale</div>
-          <div class="mockup-line accent"></div>
-          <div class="mockup-line"></div>
-          <div class="mockup-line"></div>
-          <div class="mockup-line short"></div>
-          <div style="margin-top:32px; padding:16px; background:white; border-radius:12px; border:1px solid var(--ai-taupe); font-family:'DM Sans', sans-serif; font-size:0.8rem; color:var(--ai-sage);">
-            <strong>AI Forklaring:</strong> Dette avsnittet betyr at du har rett til...
-          </div>
-        </div>
+        <img src="images/industrial_safety.jpg" alt="Industri- og HMS-sikkerhet med digital verktøy">
       </div>
     </div>
   </div>
 </section>
 
+<!-- VERDIER -->
 <section class="values" id="verdier">
   <div class="values-container">
     <span class="section-label reveal">03 — Våre verdier</span>
     <h2 class="section-title reveal">Fundamentet for alt vi gjør</h2>
+    
     <div class="values-grid">
       <div class="value-card reveal">
         <span class="value-num">01</span>
@@ -503,12 +667,14 @@ footer {
   </div>
 </section>
 
+<!-- KONTAKT -->
 <section class="contact" id="kontakt">
   <div class="contact-grid">
     <div class="contact-info reveal">
       <span class="section-label" style="color:rgba(255,255,255,0.4)">04 — Kontakt</span>
       <h2 class="section-title">La oss skape fremtiden sammen</h2>
       <p>Er du nysgjerrig på hvordan vi kan hjelpe din organisasjon? Vi tar gjerne en uforpliktende prat.</p>
+      
       <div class="contact-methods">
         <div>
           <span class="method-label">E-post</span>
@@ -525,13 +691,12 @@ footer {
       </div>
     </div>
     <div class="contact-visual reveal">
-      <div style="width:100%; height:100%; min-height:300px; background:rgba(255,255,255,0.03); border-radius:32px; border:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center;">
-        <span class="serif" style="font-size:4rem; opacity:0.1;">NT</span>
-      </div>
+      <img src="images/aquaculture.jpg" alt="Havbruk og maritime næringer - en av Aigrees målgrupper" style="width: 100%; height: 100%; object-fit: cover; border-radius: 32px;">
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <span class="footer-copy">&copy; 2026 Nordic Tide AS. Org.nr. 934 616 561</span>
   <div class="footer-links">
@@ -541,15 +706,14 @@ footer {
   </div>
 </footer>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-close" id="closeModal">&times;</button>
     <h3>Send oss en melding</h3>
     <p style="color:var(--nt-dim); margin-bottom:32px; font-size:0.9rem;">Vi svarer deg så raskt vi kan, vanligvis innen 24 timer.</p>
+    
     <form action="https://formsubmit.co/post@nordictide.tech" method="POST">
-      <input type="hidden" name="_subject" value="Ny henvendelse fra nordictide.tech">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="_honey" style="display:none">
       <div class="form-group">
         <label>Navn</label>
         <input type="text" name="name" required placeholder="Ditt navn">
@@ -568,19 +732,28 @@ footer {
 </div>
 
 <script>
+// Navbar scroll effect
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
-  nav.classList.toggle('scrolled', window.scrollY > 50);
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
 });
 
+// Mobile Menu
 const menuBtn = document.getElementById('menuBtn');
 const navLinks = document.getElementById('navLinks');
+const links = document.querySelectorAll('.nav-link, .nav-cta');
+
 menuBtn.addEventListener('click', () => {
   menuBtn.classList.toggle('open');
   navLinks.classList.toggle('open');
   document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
 });
-document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+
+links.forEach(link => {
   link.addEventListener('click', () => {
     menuBtn.classList.remove('open');
     navLinks.classList.remove('open');
@@ -588,32 +761,52 @@ document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
   });
 });
 
+// Reveal Animation
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), index * 100);
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 100);
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+}, observerOptions);
+
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// Modal Logic
+const openModal = document.getElementById('openModal');
+const closeModal = document.getElementById('closeModal');
 const modalOverlay = document.getElementById('modalOverlay');
-document.getElementById('openModal').addEventListener('click', (e) => {
+
+openModal.addEventListener('click', (e) => {
   e.preventDefault();
   modalOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 });
-document.getElementById('closeModal').addEventListener('click', () => {
+
+closeModal.addEventListener('click', () => {
   modalOverlay.classList.remove('open');
   document.body.style.overflow = '';
 });
+
 modalOverlay.addEventListener('click', (e) => {
-  if (e.target === modalOverlay) { modalOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+  if (e.target === modalOverlay) {
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 });
+
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
-    modalOverlay.classList.remove('open'); document.body.style.overflow = '';
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
   }
 });
 </script>
