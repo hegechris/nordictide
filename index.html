@@ -506,10 +506,14 @@ footer {
 </head>
 <body>
 
+<!-- SKIP NAV -->
+<a href="#om" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:12px 24px;background:var(--ai-sage);color:white;font-weight:600;border-radius:0 0 8px 0;text-decoration:none;">Hopp til innhold</a>
+<style>.skip-link:focus{position:fixed!important;left:0!important;top:0!important;width:auto!important;height:auto!important;overflow:visible!important;}</style>
+
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="logo">Nordic Tide</a>
-  <button class="hamburger" id="menuBtn" aria-label="Meny">
+  <button class="hamburger" id="menuBtn" aria-label="Meny" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
@@ -610,7 +614,7 @@ footer {
           <li class="feature-item"><span class="feature-icon">✓</span> Skalerbar onboarding for alle bransjer</li>
         </ul>
         
-        <a href="https://aigree.no" class="btn-aigree" target="_blank">Utforsk aigree.no &rarr;</a>
+        <a href="https://aigree.no" class="btn-aigree" target="_blank" rel="noopener">Utforsk aigree.no &rarr;</a>
       </div>
       <div class="aigree-visual">
         <div class="aigree-mockup">
@@ -687,7 +691,7 @@ footer {
 <footer>
   <span class="footer-copy">&copy; 2026 Nordic Tide AS. Org.nr. 934 616 561</span>
   <div class="footer-links">
-    <a href="https://aigree.no" target="_blank">Aigree</a>
+    <a href="https://aigree.no" target="_blank" rel="noopener">Aigree</a>
     <a href="#om">Om oss</a>
     <a href="#kontakt">Kontakt</a>
   </div>
@@ -712,7 +716,9 @@ const links = document.querySelectorAll('.nav-link, .nav-cta');
 menuBtn.addEventListener('click', () => {
   menuBtn.classList.toggle('open');
   navLinks.classList.toggle('open');
-  document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  const isOpen = navLinks.classList.contains('open');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+  menuBtn.setAttribute('aria-expanded', isOpen);
 });
 
 links.forEach(link => {
