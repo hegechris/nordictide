@@ -21,7 +21,13 @@
 <meta name="twitter:image" content="https://nordictide.tech/images/seo-og.jpg">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Nordic Tide","legalName":"Nordic Tide AS","url":"https://nordictide.tech","foundingDate":"2024","address":{"@type":"PostalAddress","addressRegion":"Fosen, Trøndelag","addressCountry":"NO"},"contactPoint":{"@type":"ContactPoint","email":"post@nordictide.tech","contactType":"customer service","availableLanguage":["Norwegian","English"]}}
+{"@context":"https://schema.org","@type":"Organization","name":"Nordic Tide","legalName":"Nordic Tide AS","url":"https://nordictide.tech","foundingDate":"2024","description":"Nordic Tide AS er et norsk teknologiselskap fra Fosen i Trøndelag som utvikler AI-drevne løsninger for klarere kommunikasjon. Selskapet står bak produktet Aigree.","address":{"@type":"PostalAddress","addressRegion":"Fosen, Trøndelag","addressCountry":"NO"},"contactPoint":{"@type":"ContactPoint","email":"post@nordictide.tech","contactType":"customer service","availableLanguage":["Norwegian","English"]},"sameAs":["https://w2.brreg.no/enhet/sok/detalj.jsp?orgnr=934616561","https://aigree.no"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Nordic Tide","url":"https://nordictide.tech"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Aigree","url":"https://aigree.no","applicationCategory":"BusinessApplication","description":"Aigree er en intelligent plattform utviklet av Nordic Tide AS som sikrer at viktig informasjon faktisk blir forstått. Plattformen bruker AI til å tilpasse, forklare og bekrefte forståelse av kontrakter, HMS-dokumenter og rutiner.","operatingSystem":"Web","creator":{"@type":"Organization","name":"Nordic Tide AS","url":"https://nordictide.tech"},"offers":{"@type":"Offer","availability":"https://schema.org/OnlineOnly"}}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,7 +108,7 @@ nav.scrolled { height: 60px; border-bottom-color: rgba(0,0,0,0.1); }
 .nav-link:hover { color: var(--nt-black); background: rgba(0,0,0,0.03); }
 
 .nav-cta {
-  background: var(--nt-black); color: var(--nt-white);
+  background: var(--ai-sage); color: var(--nt-white);
   padding: 10px 20px; border-radius: 8px;
   font-weight: 600; font-size: 0.85rem;
   text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease;
@@ -199,8 +205,8 @@ nav.scrolled { height: 60px; border-bottom-color: rgba(0,0,0,0.1); }
   display: inline-flex; align-items: center; gap: 8px;
 }
 
-.btn-dark { background: var(--nt-black); color: var(--nt-white); }
-.btn-dark:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.btn-dark { background: var(--ai-sage); color: var(--nt-white); }
+.btn-dark:hover { background: var(--ai-sage-light); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(45,95,79,0.2); }
 
 .btn-outline {
   background: transparent; color: var(--nt-black);
@@ -486,16 +492,8 @@ footer {
 
 @media (max-width: 768px) {
   nav { padding: 0 24px; }
-  .nav-links {
-    position: fixed; inset: 0; background: var(--nt-white);
-    flex-direction: column; justify-content: center;
-    padding: 40px; gap: 24px; transform: translateX(100%);
-    transition: var(--transition-smooth);
-  }
-  .nav-links.open { transform: translateX(0); }
-  .nav-link { font-size: 1.5rem; }
-  .nav-cta { font-size: 1.2rem; margin: 0; width: 100%; text-align: center; }
-  .hamburger { display: block; }
+  .nav-links { display: none; }
+  .hamburger { display: none; }
   
   section { padding: 80px 24px; }
   .hero h1 { font-size: 3.5rem; }
@@ -571,7 +569,7 @@ footer {
     <div class="about-text reveal">
       <span class="section-label">01 — Om oss</span>
       <h2 class="section-title">Vi gjør det komplekse enkelt</h2>
-      <p>Nordic Tide AS er et teknologiselskap med røtter på Fosen i Trøndelag. Vi brenner for å utvikle produkter som bygger bro mellom organisasjoner og mennesker – med fokus på klarhet, tilgjengelighet og gjensidig tillit.</p>
+      <p>Nordic Tide AS (org.nr. 934 616 561) er et norsk teknologiselskap fra Fosen i Trøndelag. Vi utvikler AI-drevne produkter som bygger bro mellom organisasjoner og mennesker – med fokus på klarhet, tilgjengelighet og gjensidig tillit.</p>
       <p>Vår filosofi er enkel: Informasjon har ingen verdi hvis den ikke blir forstått. Derfor bruker vi moderne teknologi for å bryte ned barrierer.</p>
     </div>
     <div class="stats-grid reveal">
@@ -605,7 +603,7 @@ footer {
       <div class="aigree-content">
         <span class="aigree-logo">aigree</span>
         <span class="aigree-tagline">Sendt er ikke det samme som forstått.</span>
-        <p class="aigree-desc">Aigree er en intelligent plattform som sikrer at viktig informasjon faktisk når frem. Vi hjelper organisasjoner med å tilpasse, forklare og bekrefte forståelse av kontrakter, HMS og rutiner.</p>
+        <p class="aigree-desc">Aigree er utviklet av Nordic Tide AS og er en intelligent plattform som sikrer at viktig informasjon faktisk når frem. Vi hjelper organisasjoner med å tilpasse, forklare og bekrefte forståelse av kontrakter, HMS og rutiner.</p>
         
         <ul class="feature-list">
           <li class="feature-item"><span class="feature-icon">✓</span> AI-drevet forklaring på mottakerens språk</li>
